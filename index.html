@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CEO Dashboard v4 — 2026 결산리뷰</title>
+<title>CEO Dashboard v4 — 2026 결산리뷰 (1~5월)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
@@ -108,7 +108,7 @@ td.est-cell { background: rgba(245,166,35,.06) !important; }
 <div class="login-wrap" id="loginWrap">
   <div class="login-card">
     <h1>CEO Dashboard v4</h1>
-    <p>2026 결산리뷰 (1~4월 가결산 + 5월 추정)</p>
+    <p>2026 결산리뷰 · 1~5월 결산</p>
     <input type="password" id="pwd" placeholder="비밀번호 입력" autofocus />
     <button id="loginBtn" onclick="doLogin()">접속</button>
     <div class="login-err" id="err"></div>
@@ -118,14 +118,14 @@ td.est-cell { background: rgba(245,166,35,.06) !important; }
 <div class="app" id="app">
   <aside class="sidebar">
     <div class="brand">CEO Dashboard v4</div>
-    <div class="brand-sub">2026.05.31 · 1~4월 가결산</div>
+    <div class="brand-sub">2026.05.31 · 1~5월 결산</div>
     <nav class="nav" id="nav"></nav>
   </aside>
   <main class="main">
     <div class="hdr">
       <div>
         <div class="hdr-title" id="pageTitle">전사 요약</div>
-        <div class="hdr-sub" id="pageSub">2026년 1~4월 가결산 + 5월 추정</div>
+        <div class="hdr-sub" id="pageSub">2026년 1~5월 결산</div>
       </div>
       <div class="hdr-sub">단위: 백만원</div>
     </div>
@@ -134,9 +134,9 @@ td.est-cell { background: rgba(245,166,35,.06) !important; }
 </div>
 
 <script>
-const CT  = "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";
-const SALT= "CVtKznZt6186y/JKvCh04A==";
-const IV  = "pa37ievIn4oK2uYG";
+const CT  = "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";
+const SALT= "/W3Fht2rTiAIeTkG8/+QMA==";
+const IV  = "mMmOaGKWvc+9QUDi";
 
 async function deriveKey(password, salt) {
   const enc = new TextEncoder();
@@ -177,702 +177,259 @@ async function doLogin() {
 document.getElementById('pwd').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
 
 const PAGES = [
-  ['summary',   '전사 요약',          '2026년 1~4월 가결산 + 5월 추정'],
-  ['channel',   '채널별 매출',        '1~4월 기준 · TOP 12 채널'],
-  ['sku',       'SKU별 매출',          '1~4월 기준 · TOP 15 SKU'],
-  ['matrix',    '채널 × SKU 매트릭스', '1~4월 YTD 누계 · 히트맵'],
-  ['pnl',       '손익계산서',          '4월 가결산 + 5월 추정 · 1~5월 누계'],
-  ['yoy',       '전년 동기 대비',      '2026 vs 2025 (1~4월)'],
+  ['summary',   '전사 요약',          '2026년 1~5월 결산'],
+  ['channel',   '채널별 매출',        '1~5월 기준 · TOP 12 채널'],
+  ['sku',       'SKU별 매출',          '1~5월 기준 · TOP 15 SKU'],
+  ['matrix',    '채널 × SKU 매트릭스', '1~5월 YTD 누계 · 히트맵'],
+  ['pnl',       '손익계산서',          '월별 1~5월 + 누계'],
+  ['yoy',       '전년 동기 대비',      '2026 vs 2025 (1~5월)'],
   ['multiyear', '연도별 추이',         '2022 ~ 2026 매출/영업이익'],
-  ['target',    '목표 대비 실적',      '2026 매출 목표 160억'],
+  ['target',    '목표 대비 실적',      '2026 매출 목표 172억'],
   ['sources',   '데이터 소스',         '원본 파일 목록'],
 ];
 const COLORS = ['#4a9eff','#3ecf8e','#f5a623','#ff5f5f','#9b8afb','#2dd4bf','#f472b6','#ffd700','#ff9f7f','#7fb8d4','#c084fc','#fbbf24','#34d399','#a78bfa','#fb7185'];
 const MONTHS = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+const M5 = ['1월','2월','3월','4월','5월'];
 
-function fmt(n, dec) {
-  if (n === null || n === undefined || isNaN(n)) return '-';
-  dec = dec === undefined ? 1 : dec;
-  return Number(n).toLocaleString('ko-KR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
-}
-function pct(n) {
-  if (n === null || n === undefined || isNaN(n)) return '-';
-  const s = n >= 0 ? '+' : '';
-  return s + Number(n).toFixed(1) + '%';
-}
-function cls(n) { return n >= 0 ? 'pos' : 'neg'; }
-function badge(n, suffix) {
-  if (n === null || n === undefined) return '<span class="badge neu">-</span>';
-  const c = n >= 0 ? 'up' : 'dn';
-  return `<span class="badge ${c}">${pct(n)}${suffix||''}</span>`;
-}
-function chartScales(){ return {
-  x: {grid:{color:'#252a3a'}, ticks:{color:'#8b92a8',font:{size:11}}},
-  y: {grid:{color:'#252a3a'}, ticks:{color:'#8b92a8',font:{size:11}}}
-}; }
+function fmt(n, dec){ if(n===null||n===undefined||isNaN(n)) return '-'; dec=dec===undefined?1:dec; return Number(n).toLocaleString('ko-KR',{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+function pct(n){ if(n===null||n===undefined||isNaN(n)) return '-'; const s=n>=0?'+':''; return s+Number(n).toFixed(1)+'%'; }
+function cls(n){ return n>=0?'pos':'neg'; }
+function badge(n,suffix){ if(n===null||n===undefined) return '<span class="badge neu">-</span>'; const c=n>=0?'up':'dn'; return `<span class="badge ${c}">${pct(n)}${suffix||''}</span>`; }
+function chartScales(){ return { x:{grid:{color:'#252a3a'},ticks:{color:'#8b92a8',font:{size:11}}}, y:{grid:{color:'#252a3a'},ticks:{color:'#8b92a8',font:{size:11}}} }; }
 
-function renderAll() {
-  const nav = document.getElementById('nav');
-  nav.innerHTML = PAGES.map(([id,t,s]) =>
-    `<button class="nav-btn" data-page="${id}" onclick="goPage('${id}')">${t}</button>`
-  ).join('');
-  const pages = document.getElementById('pages');
-  pages.innerHTML = PAGES.map(([id,t,s]) => `<section class="page" id="page-${id}"></section>`).join('');
-  pageSummary();
-  pageChannel();
-  pageSku();
-  pageMatrix();
-  pagePnl();
-  pageYoy();
-  pageMultiyear();
-  pageTarget();
-  pageSources();
+function renderAll(){
+  const nav=document.getElementById('nav');
+  nav.innerHTML=PAGES.map(([id,t,s])=>`<button class="nav-btn" data-page="${id}" onclick="goPage('${id}')">${t}</button>`).join('');
+  document.getElementById('pages').innerHTML=PAGES.map(([id])=>`<section class="page" id="page-${id}"></section>`).join('');
+  pageSummary();pageChannel();pageSku();pageMatrix();pagePnl();pageYoy();pageMultiyear();pageTarget();pageSources();
   goPage('summary');
 }
-
-function goPage(id) {
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('on', b.dataset.page === id));
-  document.querySelectorAll('.page').forEach(p => p.classList.toggle('on', p.id === 'page-' + id));
-  const meta = PAGES.find(p => p[0] === id);
-  if (meta) {
-    document.getElementById('pageTitle').textContent = meta[1];
-    document.getElementById('pageSub').textContent = meta[2];
-  }
-  setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 50);
+function goPage(id){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.page===id));
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id==='page-'+id));
+  const meta=PAGES.find(p=>p[0]===id);
+  if(meta){document.getElementById('pageTitle').textContent=meta[1];document.getElementById('pageSub').textContent=meta[2];}
+  setTimeout(()=>{window.dispatchEvent(new Event('resize'));},50);
 }
 
-/* ════════════════════════════════════════════════════════
-   pageSummary — 5 months, May estimate visually distinct
-   ════════════════════════════════════════════════════════ */
-function pageSummary() {
-  const k = DATA.kpi;
-  const ins = DATA.insights;
-  const p = DATA.pnl2026;
-  const html = `
+function pageSummary(){
+  const k=DATA.kpi, ins=DATA.insights, p=DATA.pnl2026;
+  const html=`
     <div class="kgrid">
-      <div class="kcard b">
-        <div class="klbl">YTD 매출 (1~4월)</div>
-        <div class="kval">${fmt(k.ytdRevenue)}<span>백만원</span></div>
-        <div class="ksub">4개월 합계</div>
-        ${badge(k.yoyRevenue, ' YoY')}
-      </div>
-      <div class="kcard g">
-        <div class="klbl">YTD 영업이익</div>
-        <div class="kval ${cls(k.ytdOpi)}">${fmt(k.ytdOpi)}<span>백만원</span></div>
-        <div class="ksub">영업이익률 ${fmt(k.opiMargin,2)}%</div>
-        ${badge(k.yoyOpi, ' YoY')}
-      </div>
-      <div class="kcard a">
-        <div class="klbl">4월 단월 매출</div>
-        <div class="kval">${fmt(k.latestRev)}<span>백만원</span></div>
-        <div class="ksub">영업이익률 ${fmt(k.latestMargin,2)}%</div>
-      </div>
-      <div class="kcard p">
-        <div class="klbl">5월 추정 매출</div>
-        <div class="kval est">${fmt(k.mayEstRev)}<span>백만원</span></div>
-        <div class="ksub">추정 영업이익 ${fmt(k.mayEstOpi)}백만원</div>
-      </div>
+      <div class="kcard b"><div class="klbl">YTD 매출 (1~5월)</div><div class="kval">${fmt(k.ytdRevenue)}<span>백만원</span></div><div class="ksub">5개월 합계</div>${badge(k.yoyRevenue,' YoY')}</div>
+      <div class="kcard g"><div class="klbl">YTD 영업이익</div><div class="kval ${cls(k.ytdOpi)}">${fmt(k.ytdOpi)}<span>백만원</span></div><div class="ksub">영업이익률 ${fmt(k.opiMargin,2)}%</div>${badge(k.yoyOpi,' YoY')}</div>
+      <div class="kcard a"><div class="klbl">5월 단월 매출</div><div class="kval">${fmt(k.latestRev)}<span>백만원</span></div><div class="ksub">영업이익률 ${fmt(k.latestMargin,2)}%</div></div>
+      <div class="kcard p"><div class="klbl">YTD 당기순이익</div><div class="kval ${cls(k.ytdNet)}">${fmt(k.ytdNet)}<span>백만원</span></div><div class="ksub">순이익률 ${fmt(k.ytdNet/k.ytdRevenue*100,2)}%</div></div>
     </div>
     <div class="kgrid">
-      <div class="kcard t">
-        <div class="klbl">YTD 매출원가</div>
-        <div class="kval">${fmt(k.ytdCogs)}<span>백만원</span></div>
-        <div class="ksub">원가율 ${fmt(k.ytdCogs/k.ytdRevenue*100,1)}%</div>
-      </div>
-      <div class="kcard pk">
-        <div class="klbl">YTD 판관비</div>
-        <div class="kval">${fmt(k.ytdPan)}<span>백만원</span></div>
-        <div class="ksub">판관비율 ${fmt(k.ytdPan/k.ytdRevenue*100,1)}%</div>
-      </div>
-      <div class="kcard r">
-        <div class="klbl">YTD 매출총이익</div>
-        <div class="kval">${fmt(k.ytdGross)}<span>백만원</span></div>
-        <div class="ksub">매출총이익률 ${fmt(k.ytdGross/k.ytdRevenue*100,1)}%</div>
-      </div>
-      <div class="kcard b">
-        <div class="klbl">3년 CAGR (매출)</div>
-        <div class="kval">${k.cagr3yr !== null ? pct(k.cagr3yr) : '-'}</div>
-        <div class="ksub">2022 → 2025 연평균 성장률</div>
-      </div>
+      <div class="kcard t"><div class="klbl">YTD 매출원가</div><div class="kval">${fmt(k.ytdCogs)}<span>백만원</span></div><div class="ksub">원가율 ${fmt(k.ytdCogs/k.ytdRevenue*100,1)}%</div></div>
+      <div class="kcard pk"><div class="klbl">YTD 판관비</div><div class="kval">${fmt(k.ytdPan)}<span>백만원</span></div><div class="ksub">판관비율 ${fmt(k.ytdPan/k.ytdRevenue*100,1)}%</div></div>
+      <div class="kcard r"><div class="klbl">YTD 매출총이익</div><div class="kval">${fmt(k.ytdGross)}<span>백만원</span></div><div class="ksub">매출총이익률 ${fmt(k.ytdGross/k.ytdRevenue*100,1)}%</div></div>
+      <div class="kcard b"><div class="klbl">3년 CAGR (매출)</div><div class="kval">${k.cagr3yr!==null?pct(k.cagr3yr):'-'}</div><div class="ksub">2022 → 2025 연평균</div></div>
     </div>
-    <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li><b>1~4월 매출 ${fmt(k.ytdRevenue)}백만원</b>, 전년 동기 대비 <b>${pct(k.yoyRevenue)}</b> ${k.yoyRevenue>=0?'성장':'감소'}했습니다.</li>
-        <li><b>영업이익률 ${fmt(k.opiMargin,2)}%</b>, ${k.opiMargin>=10?'양호한 수익성':'개선 여지가 있는 수준'}입니다 (영업이익 ${fmt(k.ytdOpi)}백만원).</li>
-        <li>채널 1위 <b>${ins.topChannel}</b> (${fmt(ins.topChannelYtd)}백만원), SKU 1위 <b>${ins.topSku}</b> (${fmt(ins.topSkuYtd)}백만원).</li>
-        <li>5월 추정 매출 <b>${fmt(k.mayEstRev)}백만원</b>, 1~5월 합계 약 <b>${fmt(k.ytdRevenue + k.mayEstRev)}백만원</b> 전망.</li>
-        <li>2025년 적자월 <b>${ins.lossMonths2025}개월</b> → 2026 1~4월 ${k.ytdOpi>=0?'흑자 유지':'적자 진입'}.</li>
-      </ul>
-    </div>
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li><b>1~5월 매출 ${fmt(k.ytdRevenue)}백만원</b>, 전년 동기 대비 <b>${pct(k.yoyRevenue)}</b> ${k.yoyRevenue>=0?'성장':'감소'}했습니다.</li>
+      <li><b>영업이익률 ${fmt(k.opiMargin,2)}%</b>, 영업이익 ${fmt(k.ytdOpi)}백만원 (전년 동기 ${pct(k.yoyOpi)}).</li>
+      <li>채널 1위 <b>${ins.topChannel}</b> (${fmt(ins.topChannelYtd)}백만원), SKU 1위 <b>${ins.topSku}</b> (${fmt(ins.topSkuYtd)}백만원).</li>
+      <li>5월 단월 영업이익 <b class="${cls(p['영업이익']['5월'])}">${fmt(p['영업이익']['5월'])}백만원</b> — 광고선전비·기부금 집행으로 단월 적자.</li>
+      <li>2025년 적자월 <b>${ins.lossMonths2025}개월</b> → 2026 1~5월 누계 ${k.ytdOpi>=0?'흑자':'적자'}.</li>
+    </ul></div>
     <div class="cgrid2">
-      <div class="card">
-        <div class="ctitle">월별 매출 추이 <small>1~5월 (백만원) · 5월은 추정</small></div>
-        <div class="chart-box"><canvas id="sum-rev"></canvas></div>
-      </div>
-      <div class="card">
-        <div class="ctitle">월별 영업이익 <small>1~5월 (백만원) · 5월은 추정</small></div>
-        <div class="chart-box"><canvas id="sum-opi"></canvas></div>
-      </div>
-    </div>
-  `;
-  document.getElementById('page-summary').innerHTML = html;
-
-  const revData = [p['매출액']['1월'],p['매출액']['2월'],p['매출액']['3월'],p['매출액']['4월'],p['매출액']['5월(E)']];
-  const opiData = [p['영업이익']['1월'],p['영업이익']['2월'],p['영업이익']['3월'],p['영업이익']['4월'],p['영업이익']['5월(E)']];
-  const labels5 = ['1월','2월','3월','4월','5월(E)'];
-
-  new Chart(document.getElementById('sum-rev'), {
-    type:'line',
-    data:{labels:labels5, datasets:[
-      {
-        label:'매출액 (확정)', data:[revData[0],revData[1],revData[2],revData[3],null],
-        borderColor:'#4a9eff', backgroundColor:'rgba(74,158,255,.15)', tension:.3, fill:true, borderWidth:2, pointRadius:4
-      },
-      {
-        label:'매출액 (추정)', data:[null,null,null,revData[3],revData[4]],
-        borderColor:'#4a9eff', borderDash:[6,4], backgroundColor:'rgba(74,158,255,.06)', tension:.3, fill:true, borderWidth:2, pointRadius:4,
-        pointStyle:'triangle'
-      }
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:10}}}},scales:chartScales()}
-  });
-  new Chart(document.getElementById('sum-opi'), {
-    type:'bar',
-    data:{labels:labels5, datasets:[{
-      label:'영업이익',
-      data:opiData,
-      backgroundColor:opiData.map((v,i) => {
-        if (i === 4) return v>=0 ? 'rgba(62,207,142,.45)' : 'rgba(255,95,95,.45)';
-        return v>=0 ? '#3ecf8e' : '#ff5f5f';
-      }),
-      borderColor:opiData.map((v,i) => {
-        if (i === 4) return v>=0 ? '#3ecf8e' : '#ff5f5f';
-        return 'transparent';
-      }),
-      borderWidth:opiData.map((v,i) => i===4 ? 2 : 0),
-      borderDash: [6,4]
-    }]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}
-  });
+      <div class="card"><div class="ctitle">월별 매출 추이 <small>1~5월 (백만원)</small></div><div class="chart-box"><canvas id="sum-rev"></canvas></div></div>
+      <div class="card"><div class="ctitle">월별 영업이익 <small>1~5월 (백만원)</small></div><div class="chart-box"><canvas id="sum-opi"></canvas></div></div>
+    </div>`;
+  document.getElementById('page-summary').innerHTML=html;
+  const revData=M5.map(m=>p['매출액'][m]); const opiData=M5.map(m=>p['영업이익'][m]);
+  new Chart(document.getElementById('sum-rev'),{type:'line',data:{labels:M5,datasets:[{label:'매출액',data:revData,borderColor:'#4a9eff',backgroundColor:'rgba(74,158,255,.15)',tension:.3,fill:true,borderWidth:2,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}});
+  new Chart(document.getElementById('sum-opi'),{type:'bar',data:{labels:M5,datasets:[{label:'영업이익',data:opiData,backgroundColor:opiData.map(v=>v>=0?'#3ecf8e':'#ff5f5f')}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}});
 }
 
-/* ════════════════════════════════════════════════════════
-   pageChannel — 1~4월
-   ════════════════════════════════════════════════════════ */
-function pageChannel() {
-  const ch = DATA.channels;
-  const topCh = ch.top;
-  const tableRows = topCh.map((c,i) => {
-    const m = ch.monthly2026[c.name] || [0,0,0,0];
-    return `<tr>
-      <td><span style="display:inline-block;width:10px;height:10px;background:${COLORS[i%COLORS.length]};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${c.name}</td>
-      <td class="r">${fmt(m[0])}</td>
-      <td class="r">${fmt(m[1])}</td>
-      <td class="r">${fmt(m[2])}</td>
-      <td class="r">${fmt(m[3])}</td>
-      <td class="r"><b>${fmt(c.ytd)}</b></td>
-    </tr>`;
-  }).join('');
-  const totMo = [0,0,0,0], totYtd = topCh.reduce((s,c)=>s+c.ytd,0);
-  topCh.forEach(c => { const m = ch.monthly2026[c.name]||[0,0,0,0]; totMo[0]+=m[0]; totMo[1]+=m[1]; totMo[2]+=m[2]; totMo[3]+=m[3]; });
-  const totRow = `<tr class="tot"><td>TOP 12 합계</td><td class="r">${fmt(totMo[0])}</td><td class="r">${fmt(totMo[1])}</td><td class="r">${fmt(totMo[2])}</td><td class="r">${fmt(totMo[3])}</td><td class="r">${fmt(totYtd)}</td></tr>`;
-
-  const yoyEntries = Object.entries(DATA.insights.channelYoY).sort((a,b)=>b[1]-a[1]);
-  const bestCh = yoyEntries[0];
-  const worstCh = yoyEntries[yoyEntries.length-1];
-
-  document.getElementById('page-channel').innerHTML = `
-        <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li>최대 매출 채널: <b>${topCh[0].name}</b> (${fmt(topCh[0].ytd)}백만원, 전체의 ${fmt(topCh[0].ytd/DATA.kpi.ytdRevenue*100,1)}%)</li>
-        ${bestCh ? `<li>YoY 최고 성장 채널: <b>${bestCh[0]}</b> (${pct(bestCh[1])})</li>`:''}
-        ${worstCh && worstCh[0]!==bestCh[0] ? `<li>YoY 최대 감소 채널: <b>${worstCh[0]}</b> (${pct(worstCh[1])})</li>`:''}
-        <li>TOP 3 채널 집중도: ${fmt((topCh[0].ytd+(topCh[1]?topCh[1].ytd:0)+(topCh[2]?topCh[2].ytd:0))/DATA.kpi.ytdRevenue*100,1)}%</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="ctitle">채널별 월간 매출 추이 <small>TOP 12 · 1~4월 (백만원)</small></div>
-      <div class="chart-box tall"><canvas id="ch-line"></canvas></div>
-    </div>
-    <div class="card">
-      <div class="ctitle">채널별 매출 (1~4월)</div>
-      <table class="tbl">
-        <thead><tr><th>채널</th><th class="r">1월</th><th class="r">2월</th><th class="r">3월</th><th class="r">4월</th><th class="r">YTD</th></tr></thead>
-        <tbody>${tableRows}${totRow}</tbody>
-      </table>
-    </div>
-  `;
-  const datasets = topCh.map((c,i) => ({
-    label: c.name, data: ch.monthly2026[c.name] || [0,0,0,0],
-    borderColor: COLORS[i%COLORS.length],
-    backgroundColor: COLORS[i%COLORS.length]+'22',
-    tension: .3, borderWidth:2, fill:false, pointRadius:3
-  }));
-  new Chart(document.getElementById('ch-line'), {
-    type:'line',
-    data:{labels:['1월','2월','3월','4월'], datasets},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:10},boxWidth:12}}},scales:chartScales()}
-  });
+function pageChannel(){
+  const ch=DATA.channels, topCh=ch.top;
+  const tableRows=topCh.map((c,i)=>{const m=ch.monthly2026[c.name]||[0,0,0,0,0];
+    return `<tr><td><span style="display:inline-block;width:10px;height:10px;background:${COLORS[i%COLORS.length]};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${c.name}</td><td class="r">${fmt(m[0])}</td><td class="r">${fmt(m[1])}</td><td class="r">${fmt(m[2])}</td><td class="r">${fmt(m[3])}</td><td class="r">${fmt(m[4])}</td><td class="r"><b>${fmt(c.ytd)}</b></td></tr>`;}).join('');
+  const totMo=[0,0,0,0,0]; const totYtd=topCh.reduce((s,c)=>s+c.ytd,0);
+  topCh.forEach(c=>{const m=ch.monthly2026[c.name]||[0,0,0,0,0];for(let i=0;i<5;i++)totMo[i]+=m[i];});
+  const totRow=`<tr class="tot"><td>TOP 12 합계</td>${totMo.map(v=>`<td class="r">${fmt(v)}</td>`).join('')}<td class="r">${fmt(totYtd)}</td></tr>`;
+  document.getElementById('page-channel').innerHTML=`
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li>최대 매출 채널: <b>${topCh[0].name}</b> (${fmt(topCh[0].ytd)}백만원, 전체의 ${fmt(topCh[0].ytd/DATA.kpi.ytdRevenue*100,1)}%)</li>
+      <li>TOP 3 채널 집중도: ${fmt((topCh[0].ytd+(topCh[1]?topCh[1].ytd:0)+(topCh[2]?topCh[2].ytd:0))/DATA.kpi.ytdRevenue*100,1)}%</li>
+      <li>TOP 12 채널 누계 ${fmt(totYtd)}백만원 (전체의 ${fmt(totYtd/DATA.kpi.ytdRevenue*100,1)}%)</li>
+    </ul></div>
+    <div class="card"><div class="ctitle">채널별 월간 매출 추이 <small>TOP 12 · 1~5월 (백만원)</small></div><div class="chart-box tall"><canvas id="ch-line"></canvas></div></div>
+    <div class="card"><div class="ctitle">채널별 매출 (1~5월)</div><table class="tbl"><thead><tr><th>채널</th><th class="r">1월</th><th class="r">2월</th><th class="r">3월</th><th class="r">4월</th><th class="r">5월</th><th class="r">YTD</th></tr></thead><tbody>${tableRows}${totRow}</tbody></table></div>`;
+  const datasets=topCh.map((c,i)=>({label:c.name,data:ch.monthly2026[c.name]||[0,0,0,0,0],borderColor:COLORS[i%COLORS.length],backgroundColor:COLORS[i%COLORS.length]+'22',tension:.3,borderWidth:2,fill:false,pointRadius:3}));
+  new Chart(document.getElementById('ch-line'),{type:'line',data:{labels:M5,datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:10},boxWidth:12}}},scales:chartScales()}});
 }
 
-/* ════════════════════════════════════════════════════════
-   pageSku — 1~4월
-   ════════════════════════════════════════════════════════ */
-function pageSku() {
-  const sk = DATA.skus;
-  const tableRows = sk.top.map((s,i) => {
-    const m = sk.monthly2026[s.name] || [0,0,0,0];
-    return `<tr>
-      <td><span style="display:inline-block;width:10px;height:10px;background:${COLORS[i%COLORS.length]};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${s.name}</td>
-      <td class="r">${fmt(m[0])}</td>
-      <td class="r">${fmt(m[1])}</td>
-      <td class="r">${fmt(m[2])}</td>
-      <td class="r">${fmt(m[3])}</td>
-      <td class="r"><b>${fmt(s.ytd)}</b></td>
-    </tr>`;
-  }).join('');
-  const totSku = sk.top.reduce((s,x)=>s+x.ytd,0);
-  const top5 = sk.top.slice(0,5).reduce((s,x)=>s+x.ytd,0);
-  document.getElementById('page-sku').innerHTML = `
-        <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li>최대 SKU: <b>${sk.top[0].name}</b> (${fmt(sk.top[0].ytd)}백만원)</li>
-        <li>TOP 5 SKU 누계: ${fmt(top5)}백만원 (전체 매출의 ${fmt(top5/DATA.kpi.ytdRevenue*100,1)}%)</li>
-        <li>TOP 15 SKU 누계: ${fmt(totSku)}백만원 (전체의 ${fmt(totSku/DATA.kpi.ytdRevenue*100,1)}%)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="ctitle">TOP 15 SKU 매출 <small>1~4월 누계 (백만원)</small></div>
-      <div class="chart-box tall"><canvas id="sku-bar"></canvas></div>
-    </div>
-    <div class="card">
-      <div class="ctitle">SKU별 월간 매출</div>
-      <table class="tbl">
-        <thead><tr><th>SKU</th><th class="r">1월</th><th class="r">2월</th><th class="r">3월</th><th class="r">4월</th><th class="r">YTD</th></tr></thead>
-        <tbody>${tableRows}</tbody>
-      </table>
-    </div>
-  `;
-  new Chart(document.getElementById('sku-bar'), {
-    type:'bar',
-    data:{labels: sk.top.map(s=>s.name.length>22?s.name.slice(0,21)+'…':s.name),
-          datasets:[{label:'YTD 매출',data:sk.top.map(s=>s.ytd),backgroundColor:COLORS.slice(0,15)}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}
-  });
+function pageSku(){
+  const sk=DATA.skus;
+  const tableRows=sk.top.map((s,i)=>{const m=sk.monthly2026[s.name]||[0,0,0,0,0];
+    return `<tr><td><span style="display:inline-block;width:10px;height:10px;background:${COLORS[i%COLORS.length]};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${s.name}</td><td class="r">${fmt(m[0])}</td><td class="r">${fmt(m[1])}</td><td class="r">${fmt(m[2])}</td><td class="r">${fmt(m[3])}</td><td class="r">${fmt(m[4])}</td><td class="r"><b>${fmt(s.ytd)}</b></td></tr>`;}).join('');
+  const totSku=sk.top.reduce((s,x)=>s+x.ytd,0); const top5=sk.top.slice(0,5).reduce((s,x)=>s+x.ytd,0);
+  document.getElementById('page-sku').innerHTML=`
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li>최대 SKU: <b>${sk.top[0].name}</b> (${fmt(sk.top[0].ytd)}백만원)</li>
+      <li>TOP 5 SKU 누계: ${fmt(top5)}백만원 (전체 매출의 ${fmt(top5/DATA.kpi.ytdRevenue*100,1)}%)</li>
+      <li>TOP 15 SKU 누계: ${fmt(totSku)}백만원 (전체의 ${fmt(totSku/DATA.kpi.ytdRevenue*100,1)}%)</li>
+    </ul></div>
+    <div class="card"><div class="ctitle">TOP 15 SKU 매출 <small>1~5월 누계 (백만원)</small></div><div class="chart-box tall"><canvas id="sku-bar"></canvas></div></div>
+    <div class="card"><div class="ctitle">SKU별 월간 매출 (1~5월)</div><table class="tbl"><thead><tr><th>SKU</th><th class="r">1월</th><th class="r">2월</th><th class="r">3월</th><th class="r">4월</th><th class="r">5월</th><th class="r">YTD</th></tr></thead><tbody>${tableRows}</tbody></table></div>`;
+  new Chart(document.getElementById('sku-bar'),{type:'bar',data:{labels:sk.top.map(s=>s.name.length>22?s.name.slice(0,21)+'…':s.name),datasets:[{label:'YTD 매출',data:sk.top.map(s=>s.ytd),backgroundColor:COLORS.slice(0,15)}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}});
 }
 
-/* ════════════════════════════════════════════════════════
-   pageMatrix — 1~4월 YTD
-   ════════════════════════════════════════════════════════ */
-function pageMatrix() {
-  const hm = DATA.heatmap;
-  let maxV = 0;
-  hm.matrix.forEach(row => row.forEach(v => { if (v > maxV) maxV = v; }));
-  let hotCh='', hotSku='', hotV=0;
-  hm.matrix.forEach((row, i) => row.forEach((v, j) => {
-    if (v > hotV) { hotV = v; hotCh = hm.channels[i]; hotSku = hm.skus[j]; }
-  }));
-
-  let html = '<div class="insight"><div class="insight-h">📊 인사이트</div><ul>';
-  html += `<li>최대 셀: <b>${hotCh}</b> × <b>${hotSku}</b> = ${fmt(hotV)}백만원</li>`;
-  html += `<li>채널 ${hm.channels.length}개 × SKU ${hm.skus.length}개 매트릭스, 색상이 짙을수록 매출 규모가 큰 셀</li>`;
-  html += `<li>TOP 채널 ${hm.channels[0]}와 TOP SKU ${hm.skus[0]}의 1~4월 매출이 의사결정 우선순위</li>`;
-  html += `</ul></div>`;
-
-  html += '<div class="card"><div class="ctitle">채널 × SKU 매트릭스 <small>1~4월 YTD 누계 (백만원)</small></div>';
-  html += '<div class="hmap-wrap"><table class="hmap"><thead><tr><th class="ch-h">채널 \\ SKU</th>';
-  hm.skus.forEach(s => { html += `<th title="${s.replace(/"/g,'&quot;')}">${s.length>10?s.slice(0,10)+'…':s}</th>`; });
-  html += '</tr></thead><tbody>';
-  hm.matrix.forEach((row, i) => {
-    html += `<tr><td class="ch-name">${hm.channels[i]}</td>`;
-    row.forEach(v => {
-      const ratio = maxV > 0 ? v / maxV : 0;
-      const alpha = Math.min(.85, ratio * .9 + (v>0?.04:0));
-      const bg = `rgba(74,158,255,${alpha.toFixed(3)})`;
-      const color = ratio > .4 ? '#fff' : '#e8eaf0';
-      html += `<td style="background:${bg};color:${color}">${v>0?fmt(v):'-'}</td>`;
-    });
-    html += '</tr>';
-  });
-  html += '</tbody></table></div></div>';
-  document.getElementById('page-matrix').innerHTML = html;
+function pageMatrix(){
+  const hm=DATA.heatmap; let maxV=0;
+  hm.matrix.forEach(row=>row.forEach(v=>{if(v>maxV)maxV=v;}));
+  let hotCh='',hotSku='',hotV=0;
+  hm.matrix.forEach((row,i)=>row.forEach((v,j)=>{if(v>hotV){hotV=v;hotCh=hm.channels[i];hotSku=hm.skus[j];}}));
+  let html='<div class="insight"><div class="insight-h">📊 인사이트</div><ul>';
+  html+=`<li>최대 셀: <b>${hotCh}</b> × <b>${hotSku}</b> = ${fmt(hotV)}백만원</li>`;
+  html+=`<li>채널 ${hm.channels.length}개 × SKU ${hm.skus.length}개 매트릭스, 색이 짙을수록 매출 규모가 큰 셀</li>`;
+  html+=`<li>TOP 채널 ${hm.channels[0]} × TOP SKU ${hm.skus[0]} 조합이 의사결정 우선순위</li></ul></div>`;
+  html+='<div class="card"><div class="ctitle">채널 × SKU 매트릭스 <small>1~5월 YTD 누계 (백만원)</small></div>';
+  html+='<div class="hmap-wrap"><table class="hmap"><thead><tr><th class="ch-h">채널 \\ SKU</th>';
+  hm.skus.forEach(s=>{html+=`<th title="${s.replace(/"/g,'&quot;')}">${s.length>10?s.slice(0,10)+'…':s}</th>`;});
+  html+='</tr></thead><tbody>';
+  hm.matrix.forEach((row,i)=>{html+=`<tr><td class="ch-name">${hm.channels[i]}</td>`;
+    row.forEach(v=>{const ratio=maxV>0?v/maxV:0;const alpha=Math.min(.85,ratio*.9+(v>0?.04:0));html+=`<td style="background:rgba(74,158,255,${alpha.toFixed(3)});color:${ratio>.4?'#fff':'#e8eaf0'}">${v>0?fmt(v):'-'}</td>`;});
+    html+='</tr>';});
+  html+='</tbody></table></div></div>';
+  document.getElementById('page-matrix').innerHTML=html;
 }
 
-/* ════════════════════════════════════════════════════════
-   pagePnl — 7 columns: 25.12 | 26.1 | 26.2 | 26.3 | 26.4 | 5월(E) | 1~5월 합계
-   ════════════════════════════════════════════════════════ */
-function pagePnl() {
-  const p = DATA.pnl2026;
-  const detail = DATA.pnlDetail;
-  const keyPrefixes = ['1.','2.','3.','4.','5.','6.','7.','8.','9.','10.'];
-  let detailHtml = '';
-  detail.forEach(r => {
-    const trim = r.label.trim();
-    const isKey = keyPrefixes.some(k => trim.startsWith(k));
-    const isSub = r.label.startsWith('    ') || (r.label.startsWith('  ') && !isKey);
-    const rowCls = isKey ? 'hl' : (isSub ? 'sub' : '');
-    const jan = r.jan != null ? r.jan : 0;
-    const feb = r.feb != null ? r.feb : 0;
-    const mar = r.mar != null ? r.mar : 0;
-    const apr = r.apr != null ? r.apr : 0;
-    const mayE = r.mayE;
-    const mayVal = mayE != null ? mayE : 0;
-    const sum15 = jan + feb + mar + apr + mayVal;
-    detailHtml += `<tr class="${rowCls}">
-      <td>${r.label.replace(/ /g,'&nbsp;')}</td>
-      <td class="r">${fmt(r.dec25)}</td>
-      <td class="r">${fmt(r.jan)}</td>
-      <td class="r">${fmt(r.feb)}</td>
-      <td class="r">${fmt(r.mar)}</td>
-      <td class="r">${fmt(r.apr)}</td>
-      <td class="r est-cell">${fmt(mayE)}</td>
-      <td class="r"><b>${fmt(sum15)}</b></td>
-    </tr>`;
-  });
-
-  const months4 = ['1월','2월','3월','4월'];
-  const opiRates = months4.map(m => p['매출액'][m]>0 ? p['영업이익'][m]/p['매출액'][m]*100 : 0);
-
-  document.getElementById('page-pnl').innerHTML = `
-    <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li>매출 1~4월 누계: <b>${fmt(DATA.kpi.ytdRevenue)}백만원</b> · 매출원가 ${fmt(DATA.kpi.ytdCogs)}백만원 · 매출총이익 ${fmt(DATA.kpi.ytdGross)}백만원</li>
-        <li>판관비 1~4월 누계: <b>${fmt(DATA.kpi.ytdPan)}백만원</b> · 영업이익 <b class="${cls(DATA.kpi.ytdOpi)}">${fmt(DATA.kpi.ytdOpi)}백만원</b> (영업이익률 ${fmt(DATA.kpi.opiMargin,2)}%)</li>
-        <li>월별 영업이익률: 1월 ${fmt(opiRates[0],2)}% · 2월 ${fmt(opiRates[1],2)}% · 3월 ${fmt(opiRates[2],2)}% · 4월 ${fmt(opiRates[3],2)}%</li>
-        <li>5월 추정: 매출 ${fmt(DATA.kpi.mayEstRev)}백만원, 영업이익 ${fmt(DATA.kpi.mayEstOpi)}백만원</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="ctitle">손익계산서 상세 <small>단위: 백만원 · 5월(E)는 추정치</small></div>
-      <table class="tbl">
-        <thead><tr><th>과목</th><th class="r">25.12월</th><th class="r">26.1월</th><th class="r">26.2월</th><th class="r">26.3월</th><th class="r">26.4월</th><th class="r est-cell">5월(E)</th><th class="r">1~5월 합계</th></tr></thead>
-        <tbody>${detailHtml}</tbody>
-      </table>
-    </div>
-  `;
+function pagePnl(){
+  const detail=DATA.pnlDetail;
+  const keyPrefixes=['1.','2.','3.','4.','5.','6.','7.','8.','9.','10.'];
+  let rows='';
+  detail.forEach(r=>{const trim=r.label.trim();const isKey=keyPrefixes.some(k=>trim.startsWith(k));const isSub=r.label.startsWith('  ')&&!isKey;const rowCls=isKey?'hl':(isSub?'sub':'');
+    rows+=`<tr class="${rowCls}"><td>${r.label.replace(/ /g,'&nbsp;')}</td>${r.vals.map(v=>`<td class="r">${fmt(v)}</td>`).join('')}<td class="r"><b>${fmt(r.sum)}</b></td></tr>`;});
+  const k=DATA.kpi, p=DATA.pnl2026;
+  const opiRates=M5.map(m=>p['매출액'][m]>0?p['영업이익'][m]/p['매출액'][m]*100:0);
+  document.getElementById('page-pnl').innerHTML=`
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li>매출 1~5월 누계: <b>${fmt(k.ytdRevenue)}백만원</b> · 매출원가 ${fmt(k.ytdCogs)}백만원 · 매출총이익 ${fmt(k.ytdGross)}백만원</li>
+      <li>판관비 1~5월 누계: <b>${fmt(k.ytdPan)}백만원</b> · 영업이익 <b class="${cls(k.ytdOpi)}">${fmt(k.ytdOpi)}백만원</b> (영업이익률 ${fmt(k.opiMargin,2)}%)</li>
+      <li>월별 영업이익률: 1월 ${fmt(opiRates[0],1)}% · 2월 ${fmt(opiRates[1],1)}% · 3월 ${fmt(opiRates[2],1)}% · 4월 ${fmt(opiRates[3],1)}% · 5월 ${fmt(opiRates[4],1)}%</li>
+      <li>당기순이익 1~5월: <b class="${cls(k.ytdNet)}">${fmt(k.ytdNet)}백만원</b></li>
+    </ul></div>
+    <div class="card"><div class="ctitle">손익계산서 상세 <small>단위: 백만원 · 2026년 1~5월</small></div>
+    <table class="tbl"><thead><tr><th>과목</th><th class="r">1월</th><th class="r">2월</th><th class="r">3월</th><th class="r">4월</th><th class="r">5월</th><th class="r">1~5월 합계</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
-/* ════════════════════════════════════════════════════════
-   pageYoy — 4 months (Jan-Apr), historical comparison
-   ════════════════════════════════════════════════════════ */
-function pageYoy() {
-  const my = DATA.multiyear;
-  const data25 = my['2025'];
-  const data26 = my['2026'];
-  const labels = ['1월','2월','3월','4월'];
-  const rev25 = data25['매출액'].slice(0,4);
-  const rev26 = data26['매출액'].slice(0,4);
-  const opi25 = data25['영업이익'].slice(0,4);
-  const opi26 = data26['영업이익'].slice(0,4);
-  const yoyMonthly = rev25.map((v,i) => v>0 ? ((rev26[i]-v)/v*100) : 0);
-
-  let rows = '';
-  for (let i = 0; i < 4; i++) {
-    const yoy = rev25[i]>0 ? ((rev26[i]-rev25[i])/rev25[i]*100) : 0;
-    rows += `<tr>
-      <td>${labels[i]}</td>
-      <td class="r">${fmt(rev25[i])}</td>
-      <td class="r">${fmt(rev26[i])}</td>
-      <td class="r ${cls(yoy)}">${pct(yoy)}</td>
-      <td class="r ${cls(opi25[i])}">${fmt(opi25[i])}</td>
-      <td class="r ${cls(opi26[i])}">${fmt(opi26[i])}</td>
-    </tr>`;
-  }
-  const tot25 = rev25.reduce((a,b)=>a+b,0), tot26 = rev26.reduce((a,b)=>a+b,0);
-  const totYoy = tot25>0 ? (tot26-tot25)/tot25*100 : 0;
-  const totOpi25 = opi25.reduce((a,b)=>a+b,0), totOpi26 = opi26.reduce((a,b)=>a+b,0);
-  rows += `<tr class="tot"><td>1~4월 합계</td><td class="r">${fmt(tot25)}</td><td class="r">${fmt(tot26)}</td><td class="r ${cls(totYoy)}">${pct(totYoy)}</td><td class="r ${cls(totOpi25)}">${fmt(totOpi25)}</td><td class="r ${cls(totOpi26)}">${fmt(totOpi26)}</td></tr>`;
-
-  // Historical YTD comparison from insights
-  const ytdC = DATA.insights.ytdComparison;
-  let histRows = '';
-  ['2023','2024','2025','2026'].forEach(y => {
-    const d = ytdC[y];
-    if (!d) return;
-    const isCurrent = y === '2026';
-    histRows += `<tr class="${isCurrent?'hl':''}">
-      <td>${y}년 (1~4월)</td>
-      <td class="r">${fmt(d.rev)}</td>
-      <td class="r ${cls(d.oi)}">${fmt(d.oi)}</td>
-      <td class="r">${fmt(d.margin,1)}%</td>
-    </tr>`;
-  });
-
-  const validYoy = yoyMonthly.filter(v => v !== 0);
-  const bestIdx = yoyMonthly.indexOf(Math.max(...validYoy));
-
-  document.getElementById('page-yoy').innerHTML = `
-    <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li>1~4월 매출 YoY: <b>${pct(totYoy)}</b> (2025 ${fmt(tot25)} → 2026 ${fmt(tot26)}백만원)</li>
-        <li>1~4월 영업이익: 2025 ${fmt(totOpi25)} → 2026 <b>${fmt(totOpi26)}백만원</b> (차이 ${fmt(totOpi26-totOpi25,1)}백만원)</li>
-        <li>최고 성장 월: <b>${labels[bestIdx]}</b> (${pct(yoyMonthly[bestIdx])})</li>
-      </ul>
-    </div>
+function pageYoy(){
+  const my=DATA.multiyear, d25=my['2025'], d26=my['2026'];
+  const rev25=d25['매출액'], rev26=d26['매출액'], opi25=d25['영업이익'], opi26=d26['영업이익'];
+  const yoyMonthly=rev25.map((v,i)=>v>0?((rev26[i]-v)/v*100):0);
+  let rows='';
+  for(let i=0;i<5;i++){const yoy=rev25[i]>0?((rev26[i]-rev25[i])/rev25[i]*100):0;
+    rows+=`<tr><td>${M5[i]}</td><td class="r">${fmt(rev25[i])}</td><td class="r">${fmt(rev26[i])}</td><td class="r ${cls(yoy)}">${pct(yoy)}</td><td class="r ${cls(opi25[i])}">${fmt(opi25[i])}</td><td class="r ${cls(opi26[i])}">${fmt(opi26[i])}</td></tr>`;}
+  const tot25=rev25.reduce((a,b)=>a+b,0),tot26=rev26.reduce((a,b)=>a+b,0);
+  const totYoy=tot25>0?(tot26-tot25)/tot25*100:0;
+  const to25=opi25.reduce((a,b)=>a+b,0),to26=opi26.reduce((a,b)=>a+b,0);
+  rows+=`<tr class="tot"><td>1~5월 합계</td><td class="r">${fmt(tot25)}</td><td class="r">${fmt(tot26)}</td><td class="r ${cls(totYoy)}">${pct(totYoy)}</td><td class="r ${cls(to25)}">${fmt(to25)}</td><td class="r ${cls(to26)}">${fmt(to26)}</td></tr>`;
+  const ytdC=DATA.insights.ytdComparison; let histRows='';
+  ['2023','2024','2025','2026'].forEach(y=>{const d=ytdC[y];if(!d)return;histRows+=`<tr class="${y==='2026'?'hl':''}"><td>${y}년 (1~5월)</td><td class="r">${fmt(d.rev)}</td><td class="r ${cls(d.oi)}">${fmt(d.oi)}</td><td class="r">${fmt(d.margin,1)}%</td></tr>`;});
+  const validYoy=yoyMonthly.filter(v=>v!==0); const bestIdx=yoyMonthly.indexOf(Math.max(...validYoy));
+  document.getElementById('page-yoy').innerHTML=`
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li>1~5월 매출 YoY: <b>${pct(totYoy)}</b> (2025 ${fmt(tot25)} → 2026 ${fmt(tot26)}백만원)</li>
+      <li>1~5월 영업이익: 2025 ${fmt(to25)} → 2026 <b>${fmt(to26)}백만원</b> (차이 ${fmt(to26-to25,1)}백만원)</li>
+      <li>최고 성장 월: <b>${M5[bestIdx]}</b> (${pct(yoyMonthly[bestIdx])})</li>
+    </ul></div>
     <div class="cgrid2">
-      <div class="card"><div class="ctitle">월별 매출 비교 <small>2025 vs 2026 (백만원)</small></div>
-        <div class="chart-box"><canvas id="yoy-rev"></canvas></div></div>
-      <div class="card"><div class="ctitle">월별 영업이익 비교 <small>2025 vs 2026 (백만원)</small></div>
-        <div class="chart-box"><canvas id="yoy-opi"></canvas></div></div>
+      <div class="card"><div class="ctitle">월별 매출 비교 <small>2025 vs 2026 (백만원)</small></div><div class="chart-box"><canvas id="yoy-rev"></canvas></div></div>
+      <div class="card"><div class="ctitle">월별 영업이익 비교 <small>2025 vs 2026 (백만원)</small></div><div class="chart-box"><canvas id="yoy-opi"></canvas></div></div>
     </div>
-    <div class="card">
-      <div class="ctitle">월별 상세</div>
-      <table class="tbl">
-        <thead><tr><th>월</th><th class="r">2025 매출</th><th class="r">2026 매출</th><th class="r">YoY</th><th class="r">2025 영업이익</th><th class="r">2026 영업이익</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    <div class="card">
-      <div class="ctitle">연도별 1~4월 누계 비교 <small>2023 ~ 2026 (백만원)</small></div>
-      <table class="tbl">
-        <thead><tr><th>연도</th><th class="r">매출</th><th class="r">영업이익</th><th class="r">영업이익률</th></tr></thead>
-        <tbody>${histRows}</tbody>
-      </table>
-    </div>
-  `;
-  new Chart(document.getElementById('yoy-rev'), {
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'2025',data:rev25,backgroundColor:'#555e78'},
-      {label:'2026',data:rev26,backgroundColor:'#4a9eff'}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:11}}}},scales:chartScales()}
-  });
-  new Chart(document.getElementById('yoy-opi'), {
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'2025',data:opi25,backgroundColor:'#555e78'},
-      {label:'2026',data:opi26,backgroundColor:opi26.map(v=>v>=0?'#3ecf8e':'#ff5f5f')}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:11}}}},scales:chartScales()}
-  });
+    <div class="card"><div class="ctitle">월별 상세</div><table class="tbl"><thead><tr><th>월</th><th class="r">2025 매출</th><th class="r">2026 매출</th><th class="r">YoY</th><th class="r">2025 영업이익</th><th class="r">2026 영업이익</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="card"><div class="ctitle">연도별 1~5월 누계 비교 <small>2023 ~ 2026 (백만원)</small></div><table class="tbl"><thead><tr><th>연도</th><th class="r">매출</th><th class="r">영업이익</th><th class="r">영업이익률</th></tr></thead><tbody>${histRows}</tbody></table></div>`;
+  new Chart(document.getElementById('yoy-rev'),{type:'bar',data:{labels:M5,datasets:[{label:'2025',data:rev25,backgroundColor:'#555e78'},{label:'2026',data:rev26,backgroundColor:'#4a9eff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:11}}}},scales:chartScales()}});
+  new Chart(document.getElementById('yoy-opi'),{type:'bar',data:{labels:M5,datasets:[{label:'2025',data:opi25,backgroundColor:'#555e78'},{label:'2026',data:opi26,backgroundColor:opi26.map(v=>v>=0?'#3ecf8e':'#ff5f5f')}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:11}}}},scales:chartScales()}});
 }
 
-/* ════════════════════════════════════════════════════════
-   pageMultiyear — includes 2026 (1~4월) row + CAGR
-   ════════════════════════════════════════════════════════ */
-function pageMultiyear() {
-  const at = DATA.annualTotals;
-  const years = ['2022','2023','2024','2025'];
-  const rev = years.map(y => at[y].rev);
-  const opi = years.map(y => at[y].opi);
-  const rev2026YTD = DATA.kpi.ytdRevenue;
-  const opi2026YTD = DATA.kpi.ytdOpi;
-  const ytdC = DATA.insights.ytdComparison;
-
-  let rows = '';
-  years.forEach((y,i) => {
-    rows += `<tr><td>${y}년</td><td class="r">${fmt(rev[i])}</td><td class="r ${cls(opi[i])}">${fmt(opi[i])}</td><td class="r">${rev[i]>0?fmt(opi[i]/rev[i]*100,2):'-'}%</td></tr>`;
-  });
-  rows += `<tr class="hl"><td>2026년 (1~4월)</td><td class="r">${fmt(rev2026YTD)}</td><td class="r ${cls(opi2026YTD)}">${fmt(opi2026YTD)}</td><td class="r">${fmt(DATA.kpi.opiMargin,2)}%</td></tr>`;
-
-  // Build CAGR box
-  const cagrHtml = DATA.kpi.cagr3yr !== null ? `
+function pageMultiyear(){
+  const at=DATA.annualTotals, years=['2022','2023','2024','2025'];
+  const rev=years.map(y=>at[y].rev), opi=years.map(y=>at[y].opi);
+  const rev26=DATA.kpi.ytdRevenue, opi26=DATA.kpi.ytdOpi;
+  let rows='';
+  years.forEach((y,i)=>{rows+=`<tr><td>${y}년</td><td class="r">${fmt(rev[i])}</td><td class="r ${cls(opi[i])}">${fmt(opi[i])}</td><td class="r">${rev[i]>0?fmt(opi[i]/rev[i]*100,2):'-'}%</td></tr>`;});
+  rows+=`<tr class="hl"><td>2026년 (1~5월)</td><td class="r">${fmt(rev26)}</td><td class="r ${cls(opi26)}">${fmt(opi26)}</td><td class="r">${fmt(DATA.kpi.opiMargin,2)}%</td></tr>`;
+  const cagrHtml=DATA.kpi.cagr3yr!==null?`
     <div class="kgrid three" style="margin-top:14px">
-      <div class="kcard b">
-        <div class="klbl">3년 CAGR (매출)</div>
-        <div class="kval">${pct(DATA.kpi.cagr3yr)}</div>
-        <div class="ksub">2022 → 2025 연평균</div>
-      </div>
-      <div class="kcard g">
-        <div class="klbl">2026 1~4월 Run-rate</div>
-        <div class="kval">${fmt(rev2026YTD / 4 * 12)}<span>백만원</span></div>
-        <div class="ksub">단순 연환산 (4개월 기준)</div>
-      </div>
-      <div class="kcard a">
-        <div class="klbl">2025 대비 Run-rate</div>
-        <div class="kval">${fmt((rev2026YTD/4*12/rev[3]-1)*100,1)}<span>%</span></div>
-        <div class="ksub">2025 연간 매출 ${fmt(rev[3])}백만원</div>
-      </div>
-    </div>` : '';
-
-  document.getElementById('page-multiyear').innerHTML = `
-    <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li>매출 추이: 2022 ${fmt(rev[0])} → 2025 ${fmt(rev[3])}백만원 (3년 CAGR ${pct(DATA.kpi.cagr3yr)})</li>
-        <li>영업이익 추이: 2022 ${fmt(opi[0])} → 2025 ${fmt(opi[3])}백만원 (개선 ${fmt(opi[3]-opi[0],1)}백만원)</li>
-        <li>2026 1~4월 (4개월) 만에 ${fmt(rev2026YTD)}백만원 = 2025 연 매출의 ${fmt(rev2026YTD/rev[3]*100,1)}% 수준</li>
-      </ul>
-    </div>
+      <div class="kcard b"><div class="klbl">3년 CAGR (매출)</div><div class="kval">${pct(DATA.kpi.cagr3yr)}</div><div class="ksub">2022 → 2025 연평균</div></div>
+      <div class="kcard g"><div class="klbl">2026 Run-rate (연환산)</div><div class="kval">${fmt(rev26/5*12)}<span>백만원</span></div><div class="ksub">1~5월 기준 단순 연환산</div></div>
+      <div class="kcard a"><div class="klbl">2025 대비 Run-rate</div><div class="kval">${fmt((rev26/5*12/rev[3]-1)*100,1)}<span>%</span></div><div class="ksub">2025 연 매출 ${fmt(rev[3])}백만원</div></div>
+    </div>`:'';
+  document.getElementById('page-multiyear').innerHTML=`
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li>매출 추이: 2022 ${fmt(rev[0])} → 2025 ${fmt(rev[3])}백만원 (3년 CAGR ${pct(DATA.kpi.cagr3yr)})</li>
+      <li>영업이익 추이: 2022 ${fmt(opi[0])} → 2025 ${fmt(opi[3])}백만원 (개선 ${fmt(opi[3]-opi[0],1)}백만원)</li>
+      <li>2026 1~5월 (5개월) 만에 ${fmt(rev26)}백만원 = 2025 연 매출의 ${fmt(rev26/rev[3]*100,1)}% 수준</li>
+    </ul></div>
     ${cagrHtml}
     <div class="cgrid2">
-      <div class="card"><div class="ctitle">연도별 매출 <small>2022 ~ 2025 (백만원)</small></div>
-        <div class="chart-box"><canvas id="my-rev"></canvas></div></div>
-      <div class="card"><div class="ctitle">연도별 영업이익 <small>2022 ~ 2025 (백만원)</small></div>
-        <div class="chart-box"><canvas id="my-opi"></canvas></div></div>
+      <div class="card"><div class="ctitle">연도별 매출 <small>2022 ~ 2025 (백만원)</small></div><div class="chart-box"><canvas id="my-rev"></canvas></div></div>
+      <div class="card"><div class="ctitle">연도별 영업이익 <small>2022 ~ 2025 (백만원)</small></div><div class="chart-box"><canvas id="my-opi"></canvas></div></div>
     </div>
-    <div class="card">
-      <div class="ctitle">연도별 손익 요약</div>
-      <table class="tbl">
-        <thead><tr><th>연도</th><th class="r">매출</th><th class="r">영업이익</th><th class="r">영업이익률</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
-  new Chart(document.getElementById('my-rev'), {
-    type:'bar',
-    data:{labels:years,datasets:[{label:'매출',data:rev,backgroundColor:'#4a9eff'}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}
-  });
-  new Chart(document.getElementById('my-opi'), {
-    type:'bar',
-    data:{labels:years,datasets:[{label:'영업이익',data:opi,backgroundColor:opi.map(v=>v>=0?'#3ecf8e':'#ff5f5f')}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}
-  });
+    <div class="card"><div class="ctitle">연도별 손익 요약</div><table class="tbl"><thead><tr><th>연도</th><th class="r">매출</th><th class="r">영업이익</th><th class="r">영업이익률</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  new Chart(document.getElementById('my-rev'),{type:'bar',data:{labels:years,datasets:[{label:'매출',data:rev,backgroundColor:'#4a9eff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}});
+  new Chart(document.getElementById('my-opi'),{type:'bar',data:{labels:years,datasets:[{label:'영업이익',data:opi,backgroundColor:opi.map(v=>v>=0?'#3ecf8e':'#ff5f5f')}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:chartScales()}});
 }
 
-/* ════════════════════════════════════════════════════════
-   pageTarget — 5 months of cumulative actuals, May dashed
-   ════════════════════════════════════════════════════════ */
-function pageTarget() {
-  const t = DATA.target2026;
-  const targetMo = t.monthly;
-  const actualMo = DATA.multiyear['2026']['매출액'];
-  const labels = MONTHS;
-  let cumT = [], cumA = [], cumAest = [];
-  let st = 0, sa = 0;
-  for (let i = 0; i < 12; i++) {
-    st += targetMo[i] || 0;
-    cumT.push(st);
-    sa += actualMo[i] || 0;
-    if (i < 4) {
-      cumA.push(sa);
-      cumAest.push(null);
-    } else if (i === 4) {
-      cumA.push(null);
-      cumAest.push(sa);
-    } else {
-      cumA.push(null);
-      cumAest.push(null);
-    }
-  }
-  // Connect actual and estimate lines at month 4 (index 3)
-  cumAest[3] = cumA[3];
-
-  let chRows = t.channels.map(c => {
-    const rate = c.target > 0 ? c.actual / c.target * 100 : 0;
-    return `<tr>
-      <td>${c.channel}</td>
-      <td class="r">${fmt(c.target)}</td>
-      <td class="r">${fmt(c.actual)}</td>
-      <td class="r">${fmt(rate,1)}%</td>
-    </tr>`;
-  }).join('');
-  const totT = t.channels.reduce((s,c)=>s+c.target,0);
-  const totA = t.channels.reduce((s,c)=>s+c.actual,0);
-  chRows += `<tr class="tot"><td>합계</td><td class="r">${fmt(totT)}</td><td class="r">${fmt(totA)}</td><td class="r">${fmt(totT>0?totA/totT*100:0,1)}%</td></tr>`;
-
-  const ytdActual14 = actualMo.slice(0,4).reduce((a,b)=>a+b,0);
-  const ytdActual15 = actualMo.slice(0,5).reduce((a,b)=>a+b,0);
-  const ytdAchieve = t.annual>0 ? ytdActual14 / t.annual * 100 : 0;
-  const target14 = targetMo.slice(0,4).reduce((a,b)=>a+(b||0),0);
-  const target15 = targetMo.slice(0,5).reduce((a,b)=>a+(b||0),0);
-  const achieve14 = target14>0 ? ytdActual14 / target14 * 100 : 0;
-  const achieve15est = target15>0 ? ytdActual15 / target15 * 100 : 0;
-
-  document.getElementById('page-target').innerHTML = `
+function pageTarget(){
+  const t=DATA.target2026, targetMo=t.monthly, actualMo=DATA.multiyear['2026']['매출액'];
+  let cumT=[],cumA=[],st=0,sa=0;
+  for(let i=0;i<12;i++){st+=targetMo[i]||0;cumT.push(st);if(i<5){sa+=actualMo[i]||0;cumA.push(sa);}else cumA.push(null);}
+  let chRows=t.channels.map(c=>{const rate=c.target>0?c.actual/c.target*100:0;return `<tr><td>${c.channel}</td><td class="r">${fmt(c.target)}</td><td class="r">${fmt(c.actual)}</td><td class="r">${fmt(rate,1)}%</td></tr>`;}).join('');
+  const totT=t.channels.reduce((s,c)=>s+c.target,0),totA=t.channels.reduce((s,c)=>s+c.actual,0);
+  chRows+=`<tr class="tot"><td>합계</td><td class="r">${fmt(totT)}</td><td class="r">${fmt(totA)}</td><td class="r">${fmt(totT>0?totA/totT*100:0,1)}%</td></tr>`;
+  const ytdActual=actualMo.slice(0,5).reduce((a,b)=>a+b,0);
+  const ytdAchieve=t.annual>0?ytdActual/t.annual*100:0;
+  const target5=targetMo.slice(0,5).reduce((a,b)=>a+(b||0),0);
+  const achieve5=target5>0?ytdActual/target5*100:0;
+  document.getElementById('page-target').innerHTML=`
     <div class="kgrid">
-      <div class="kcard b">
-        <div class="klbl">2026년 매출 목표</div>
-        <div class="kval">${fmt(t.annual)}<span>백만원</span></div>
-        <div class="ksub">${fmt(t.annual/100,0)}억원</div>
-      </div>
-      <div class="kcard g">
-        <div class="klbl">1~4월 누계 달성</div>
-        <div class="kval">${fmt(ytdActual14)}<span>백만원</span></div>
-        <div class="ksub">연 목표 대비 ${fmt(ytdAchieve,1)}%</div>
-      </div>
-      <div class="kcard a">
-        <div class="klbl">1~4월 목표 달성률</div>
-        <div class="kval ${achieve14>=100?'pos':'neg'}">${fmt(achieve14,1)}<span>%</span></div>
-        <div class="ksub">1~4월 목표 ${fmt(target14)}백만원</div>
-      </div>
-      <div class="kcard p">
-        <div class="klbl">1~5월 추정 달성률</div>
-        <div class="kval est ${achieve15est>=100?'pos':'neg'}">${fmt(achieve15est,1)}<span>%</span></div>
-        <div class="ksub">5월 포함 추정 ${fmt(ytdActual15)}백만원</div>
-      </div>
+      <div class="kcard b"><div class="klbl">2026년 매출 목표</div><div class="kval">${fmt(t.annual)}<span>백만원</span></div><div class="ksub">${fmt(t.annual/100,0)}억원</div></div>
+      <div class="kcard g"><div class="klbl">1~5월 누계 달성</div><div class="kval">${fmt(ytdActual)}<span>백만원</span></div><div class="ksub">연 목표 대비 ${fmt(ytdAchieve,1)}%</div></div>
+      <div class="kcard a"><div class="klbl">1~5월 목표 달성률</div><div class="kval ${achieve5>=100?'pos':'neg'}">${fmt(achieve5,1)}<span>%</span></div><div class="ksub">균등배분 목표 ${fmt(target5)}백만원(참고)</div></div>
+      <div class="kcard p"><div class="klbl">연 목표 진척률</div><div class="kval">${fmt(ytdAchieve,1)}<span>%</span></div><div class="ksub">5/12 경과 = 41.7%</div></div>
     </div>
-    <div class="insight">
-      <div class="insight-h">📊 인사이트</div>
-      <ul>
-        <li>2026 연간 매출 목표 <b>${fmt(t.annual)}백만원 (${fmt(t.annual/100,0)}억원)</b></li>
-        <li>1~4월 누계 <b>${fmt(ytdActual14)}백만원</b> (연 목표의 ${fmt(ytdAchieve,1)}%)</li>
-        <li>1~4월 목표 달성률: <b>${fmt(achieve14,1)}%</b> ${achieve14>=100?'(목표 초과 달성)':'(목표 미달, ' + fmt(target14 - ytdActual14) + '백만원 차이)'}</li>
-        <li>5월 추정 포함 시: 1~5월 합계 약 <b>${fmt(ytdActual15)}백만원</b> (${fmt(achieve15est,1)}% 달성)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="ctitle">월별 목표 vs 실적 <small>누적 (백만원) · 5월은 추정</small></div>
-      <div class="chart-box tall"><canvas id="tg-line"></canvas></div>
-    </div>
-    <div class="card">
-      <div class="ctitle">채널별 목표 vs 1~4월 실적 <small>(백만원)</small></div>
-      <table class="tbl">
-        <thead><tr><th>채널</th><th class="r">연간 목표</th><th class="r">1~4월 실적</th><th class="r">달성률</th></tr></thead>
-        <tbody>${chRows}</tbody>
-      </table>
-    </div>
-  `;
-  new Chart(document.getElementById('tg-line'), {
-    data:{labels, datasets:[
-      {type:'line',label:'목표 누적', data:cumT, borderColor:'#9b8afb', borderWidth:2, tension:.2, fill:false, pointRadius:3},
-      {type:'line',label:'실적 누적 (확정)', data:cumA, borderColor:'#3ecf8e', borderWidth:2, tension:.2, fill:false, spanGaps:false, pointRadius:4},
-      {type:'line',label:'실적 누적 (추정)', data:cumAest, borderColor:'#3ecf8e', borderDash:[6,4], borderWidth:2, tension:.2, fill:false, spanGaps:false, pointRadius:4, pointStyle:'triangle'},
-      {type:'bar',label:'월별 목표', data:targetMo, backgroundColor:'rgba(155,138,251,.25)'},
-      {type:'bar',label:'월별 실적 (확정)', data:actualMo.map((v,i)=>i<4?v:null), backgroundColor:'rgba(62,207,142,.55)'},
-      {type:'bar',label:'월별 실적 (추정)', data:actualMo.map((v,i)=>i===4?v:null), backgroundColor:'rgba(62,207,142,.25)', borderColor:'#3ecf8e', borderWidth:1}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:11}}}},scales:chartScales()}
-  });
+    <div class="insight"><div class="insight-h">📊 인사이트</div><ul>
+      <li>2026 연간 매출 목표 <b>${fmt(t.annual)}백만원 (${fmt(t.annual/100,0)}억원)</b></li>
+      <li>1~5월 누계 <b>${fmt(ytdActual)}백만원</b> (연 목표의 ${fmt(ytdAchieve,1)}%, 기간경과 41.7%)</li>
+      <li>최대 채널 다이소: 목표 ${fmt(t.channels[0].target)} → 실적 ${fmt(t.channels[0].actual)}백만원 (${fmt(t.channels[0].actual/t.channels[0].target*100,1)}%)</li>
+      <li>※ 월별 목표선은 연간목표 균등배분(참고용)이며 실제 월별 목표가 아님</li>
+    </ul></div>
+    <div class="card"><div class="ctitle">누적 목표(참고) vs 실적 <small>(백만원) · 목표선=연간 균등배분</small></div><div class="chart-box tall"><canvas id="tg-line"></canvas></div></div>
+    <div class="card"><div class="ctitle">채널별 연간 목표 vs 1~5월 실적 <small>(백만원)</small></div><table class="tbl"><thead><tr><th>채널</th><th class="r">연간 목표</th><th class="r">1~5월 실적</th><th class="r">달성률</th></tr></thead><tbody>${chRows}</tbody></table></div>`;
+  new Chart(document.getElementById('tg-line'),{data:{labels:MONTHS,datasets:[
+    {type:'line',label:'목표 누적(균등,참고)',data:cumT,borderColor:'#9b8afb',borderDash:[5,4],borderWidth:2,tension:.2,fill:false,pointRadius:2},
+    {type:'line',label:'실적 누적',data:cumA,borderColor:'#3ecf8e',borderWidth:2,tension:.2,fill:false,spanGaps:false,pointRadius:4},
+    {type:'bar',label:'월별 실적',data:actualMo.map((v,i)=>i<5?v:null),backgroundColor:'rgba(62,207,142,.5)'}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#8b92a8',font:{size:11}}}},scales:chartScales()}});
 }
 
-/* ════════════════════════════════════════════════════════
-   pageSources — updated dates and descriptions
-   ════════════════════════════════════════════════════════ */
-function pageSources() {
-  const list = DATA.sources.map(s => `<li>${s}</li>`).join('');
-  document.getElementById('page-sources').innerHTML = `
-    <div class="card">
-      <div class="ctitle">데이터 소스 <small>본 대시보드는 다음 원본 파일에서 추출된 데이터를 사용합니다</small></div>
-      <ul style="padding-left:20px;line-height:1.9;color:var(--text)">${list}</ul>
-    </div>
-    <div class="card">
-      <div class="ctitle">단위 및 산식 안내</div>
-      <table class="tbl">
-        <tbody>
-          <tr><td>단위</td><td>모든 금액 = <b>백만원</b> (원 단위 ÷ 1,000,000, 소수 1자리)</td></tr>
-          <tr><td>YTD (확정)</td><td>2026년 1월 + 2월 + 3월 + 4월 (가결산 완료)</td></tr>
-          <tr><td>5월 (E)</td><td>추정치 — 1~4월 월평균 × 2025년 계절비율 기반 산출</td></tr>
-          <tr><td>영업이익률</td><td>YTD 영업이익 ÷ YTD 매출 × 100</td></tr>
-          <tr><td>YoY</td><td>(2026 1~4월 − 2025 1~4월) ÷ 2025 1~4월 × 100</td></tr>
-          <tr><td>CAGR</td><td>(2025 매출 / 2022 매출)^(1/3) − 1, 4년 데이터 기반</td></tr>
-          <tr><td>채널/SKU 매출</td><td>판매실적추이분석_채널별_품목별_20260611 1~4월 합계 (P&L과 원단위 일치 확인)</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card">
-      <div class="ctitle">생성 정보</div>
-      <table class="tbl">
-        <tbody>
-          <tr><td>버전</td><td>v4</td></tr>
-          <tr><td>기준일</td><td>2026-06-11 (KST)</td></tr>
-          <tr><td>마감 월</td><td>2026년 4월 (가결산 수정본)</td></tr>
-          <tr><td>5월</td><td>추정치 포함 (1~4월 평균 × 2025년 계절비율)</td></tr>
-          <tr><td>YTD</td><td>2026년 1~5월 (5월은 추정)</td></tr>
-          <tr><td>채널/SKU</td><td>1~4월 반영 (판매실적추이분석 20260611 갱신본)</td></tr>
-          <tr><td>암호화</td><td>PBKDF2 (100,000 iter, SHA-256) → AES-GCM-256</td></tr>
-        </tbody>
-      </table>
-    </div>
-  `;
+function pageSources(){
+  const list=DATA.sources.map(s=>`<li>${s}</li>`).join('');
+  document.getElementById('page-sources').innerHTML=`
+    <div class="card"><div class="ctitle">데이터 소스 <small>본 대시보드는 다음 원본 파일에서 추출된 데이터를 사용합니다</small></div><ul style="padding-left:20px;line-height:1.9;color:var(--text)">${list}</ul></div>
+    <div class="card"><div class="ctitle">단위 및 산식 안내</div><table class="tbl"><tbody>
+      <tr><td>단위</td><td>모든 금액 = <b>백만원</b> (원 ÷ 1,000,000, 소수 1자리)</td></tr>
+      <tr><td>YTD</td><td>2026년 1~5월 합계 (전월 확정 결산)</td></tr>
+      <tr><td>영업이익률</td><td>YTD 영업이익 ÷ YTD 매출 × 100</td></tr>
+      <tr><td>YoY</td><td>(2026 1~5월 − 2025 1~5월) ÷ 2025 1~5월 × 100</td></tr>
+      <tr><td>CAGR</td><td>(2025 매출 / 2022 매출)^(1/3) − 1</td></tr>
+      <tr><td>채널/SKU</td><td>판매실적추이분석 20260623 · 1~5월 합계 (P&L과 원단위 일치)</td></tr>
+    </tbody></table></div>
+    <div class="card"><div class="ctitle">생성 정보</div><table class="tbl"><tbody>
+      <tr><td>버전</td><td>v4</td></tr>
+      <tr><td>마감 월</td><td>2026년 5월 (결산 확정)</td></tr>
+      <tr><td>YTD</td><td>2026년 1~5월 (전 구간 확정)</td></tr>
+      <tr><td>암호화</td><td>PBKDF2 (100,000 iter, SHA-256) → AES-GCM-256</td></tr>
+    </tbody></table></div>`;
 }
+
 </script>
 
 </body>
